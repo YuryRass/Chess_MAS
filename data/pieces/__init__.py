@@ -1,0 +1,1 @@
+from data.pieces.queen import Queen
