@@ -26,7 +26,7 @@ class ChessPiece:
             position (Position): текущая позиция фигуры
 
             additional_attacks (list[Move] | None, optional): список ходов,
-        когда фигура находится под атакой. Defaults to None.
+        когда фигуры находятся под атакой. Defaults to None.
 
             chess_id (str, optional): ID фигуры. Defaults to "0".
         """

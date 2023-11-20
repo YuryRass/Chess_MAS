@@ -17,13 +17,12 @@ class MoveSuggestion:
             piece_id (str): ID шахматной фигуры
 
             new_position (Position): новая возможная позиция для фигуры
-            
+
             number_of_conflicts (int): кол-во конфликтных ситуаций
         """
         self.piece_id = piece_id
         self.new_position = new_position
         self.number_of_conflicts = number_of_conflicts
-
 
     def __str__(self):
         return f"MoveSuggestion({self.piece_id}, {self.new_position}, {self.number_of_conflicts})"

@@ -26,3 +26,5 @@ class ChessPieceMovedBoardEvent:
 
     def __repr__(self) -> str:
         return str(self)
+
+BoardEvent = InactivityBoardEvent | ChessPieceMovedBoardEvent
