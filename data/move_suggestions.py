@@ -25,7 +25,8 @@ class MoveSuggestion:
         self.number_of_conflicts = number_of_conflicts
 
     def __str__(self):
-        return f"MoveSuggestion({self.piece_id}, {self.new_position}, {self.number_of_conflicts})"
+        return f"MoveSuggestion({self.piece_id}, {self.new_position}, " + \
+            f"{self.number_of_conflicts})"
 
     def __eq__(self, other: Self) -> bool:
         return (
@@ -35,7 +36,11 @@ class MoveSuggestion:
         )
 
     def __hash__(self) -> int:
-        return hash((self.piece_id, self.new_position, self.number_of_conflicts))
+        return hash(
+            (
+                self.piece_id, self.new_position, self.number_of_conflicts
+            )
+        )
 
     def copy(self) -> Self:
         return MoveSuggestion(

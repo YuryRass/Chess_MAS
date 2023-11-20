@@ -19,7 +19,8 @@ class Vector2:
         )
 
     def __eq__(self, other: Self) -> bool:
-        return self.vertical == other.vertical and self.horizontal == other.horizontal
+        return self.vertical == other.vertical and \
+            self.horizontal == other.horizontal
 
     def __hash__(self) -> int:
         return hash((self.vertical, self.horizontal))

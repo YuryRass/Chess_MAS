@@ -17,7 +17,8 @@ class Position:
         return self.position.horizontal
 
     def __str__(self):
-        return f'Position({self.position.vertical}, {self.position.horizontal})'
+        return f'Position({self.position.vertical}, ' + \
+            f'{self.position.horizontal})'
 
     def copy(self) -> Self:
         return Position(self.position.copy())

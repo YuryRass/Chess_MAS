@@ -18,7 +18,8 @@ class Move:
         return Move(self.change.copy(), self.is_direction)
 
     def __eq__(self, other: Self) -> bool:
-        return self.change == other.change and self.is_direction == other.is_direction
+        return self.change == other.change and \
+            self.is_direction == other.is_direction
 
     def __hash__(self) -> int:
         return hash((self.change, self.is_direction))

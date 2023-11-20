@@ -50,7 +50,12 @@ class ChessPiece:
         )
 
     def __hash__(self) -> int:
-        return hash((self.id, self.name, self.moves, self.position, self.additional_attacks))
+        return hash(
+            (
+                self.id, self.name, self.moves,
+                self.position, self.additional_attacks
+            )
+        )
 
     def copy(self) -> Self:
         return ChessPiece(
@@ -60,17 +65,20 @@ class ChessPiece:
             chess_id=self.id,
         )
 
-    def copy_with(self,
-        name: str | None = None,
-        moves: list[Move] | None = None,
-        position: Position | None = None,
-        additional_attacks: list[Move] | None = None,
-        chess_id: str | None = None,
+    def copy_with(
+            self,
+            name: str | None = None,
+            moves: list[Move] | None = None,
+            position: Position | None = None,
+            additional_attacks: list[Move] | None = None,
+            chess_id: str | None = None,
     ) -> Self:
         return ChessPiece(
             name if name is not None else self.name,
             moves if moves is not None else deepcopy(self.moves),
             position if position is not None else self.position,
-            additional_attacks if additional_attacks is not None else deepcopy(self.additional_attacks),
+            additional_attacks if additional_attacks is not None else deepcopy(
+                self.additional_attacks
+            ),
             chess_id if chess_id is not None else self.id,
         )

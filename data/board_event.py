@@ -4,6 +4,7 @@ from data.position import Position
 
 InactivityBoardEvent = None
 
+
 class ChessPieceMovedBoardEvent:
     def __init__(
         self,
@@ -22,9 +23,11 @@ class ChessPieceMovedBoardEvent:
         self.new_position = new_position
 
     def __str__(self):
-        return f"Move(ID={self.piece_id}, from={self.position}, to={self.new_position})"
+        return f"Move(ID={self.piece_id}, from={self.position}, " + \
+            f"to={self.new_position})"
 
     def __repr__(self) -> str:
         return str(self)
+
 
 BoardEvent = InactivityBoardEvent | ChessPieceMovedBoardEvent
