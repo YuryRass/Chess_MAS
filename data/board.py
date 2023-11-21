@@ -13,6 +13,8 @@ from data.vector2 import Vector2
 
 
 class Board:
+    """Шахматная доска"""
+    
     def __init__(self, pieces: list[ChessPiece], size: Vector2):
         """
         Args:
