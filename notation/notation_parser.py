@@ -1,3 +1,7 @@
+"""
+    Реализация абстрактного класса, используемого для
+    представления и парсинга шахматной доски
+"""
 from abc import ABC, abstractmethod
 
 from data.board import Board
@@ -12,4 +16,4 @@ class NotationParser(ABC):
 
     @abstractmethod
     def serialize(self, board: Board) -> str:
-        pass
+        ...
