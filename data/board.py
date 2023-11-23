@@ -4,7 +4,6 @@ from copy import deepcopy
 from typing import Self
 from data.board_event import \
     BoardEvent, ChessPieceMovedBoardEvent, InactivityBoardEvent
-
 from data.chess_piece import ChessPiece
 from data.conflict import Conflict
 from data.move_suggestions import MoveSuggestion
@@ -15,7 +14,7 @@ from data.vector2 import Vector2
 class Board:
     """Шахматная доска"""
 
-    def __init__(self, pieces: list[ChessPiece], size: Vector2):
+    def __init__(self, pieces: list[ChessPiece], size: Vector2) -> None:
         """
         Args:
             pieces (list[ChessPiece]): список шахматных фигур
@@ -40,10 +39,8 @@ class Board:
         Returns:
             bool: True, если присутсвует. False - иначе.
         """
-        return (
-            1 <= position.vertical <= self.size.vertical and
+        return 1 <= position.vertical <= self.size.vertical and \
             1 <= position.horizontal <= self.size.horizontal
-        )
 
     def get_chess_piece(self, position: Position) -> ChessPiece | None:
         """Возвращает шахматную фигуру для указанной позиции
@@ -221,7 +218,8 @@ class Board:
 
     def get_chesspiece_attacks(self, piece: ChessPiece) -> list[Position]:
         """Возвращает список позиций фигур, которые находятся
-        под атакой переданной фигуры piece
+        под атакой переданной фигуры piece. Также к результирующему списку
+        добавляются все возможные ходы шахм. фигуры
 
         Args:
             piece (ChessPiece): шахм. фигура

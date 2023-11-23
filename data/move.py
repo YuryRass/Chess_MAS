@@ -5,13 +5,14 @@ from data.vector2 import Vector2
 
 
 class Move:
-    def __init__(self, change: Vector2, is_direction: bool = False):
+    """Передвижения шахматных фигур"""
+    def __init__(self, change: Vector2, is_direction: bool = False) -> None:
         self.change = change
         # is_direction - возможность передвижения шахматной фигуры
-        # до упора (конца шахматной доски)
+        # до более, чем на одну клетку
         self.is_direction = is_direction
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Move({self.change}, {self.is_direction})"
 
     def copy(self) -> Self:

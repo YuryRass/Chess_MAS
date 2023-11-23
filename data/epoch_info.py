@@ -1,4 +1,5 @@
-"""Отвечает за хранение кол-ва конфликтов в эпохе.
+"""
+Отвечает за хранение кол-ва конфликтов в эпохе.
 Позволяет сравнивать конфликты между собой.
 """
 
@@ -6,10 +7,17 @@ from typing import Self
 
 
 class EpochInfo:
-    def __init__(self, number_of_conflicts: int = 0):
+    """Информация о проделанной работе для некоторой эпохи"""
+
+    def __init__(self, number_of_conflicts: int = 0) -> None:
+        """
+        Args:
+            number_of_conflicts (int, optional): кол-во конфликтов.
+        Defaults to 0.
+        """
         self.number_of_conflicts = number_of_conflicts
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"EpochInfo({self.number_of_conflicts})"
 
     def __eq__(self, other: Self) -> bool:

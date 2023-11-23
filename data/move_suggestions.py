@@ -1,16 +1,20 @@
-"""Предложения по передвижению фигуры"""
+"""Предложения по передвижению шахматной фигуры"""
 
 from typing import Self
 from data.position import Position
 
 
 class MoveSuggestion:
+    """
+    Предложения по передивижению фигур. Хранит кол-во конфликтов,
+    которые возникают при новой позиции шахматной фигуры
+    """
     def __init__(
         self,
         piece_id: str,
         new_position: Position,
         number_of_conflicts: int,
-    ):
+    ) -> None:
         """Первичая инициализация
 
         Args:
@@ -24,7 +28,7 @@ class MoveSuggestion:
         self.new_position = new_position
         self.number_of_conflicts = number_of_conflicts
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"MoveSuggestion({self.piece_id}, {self.new_position}, " + \
             f"{self.number_of_conflicts})"
 

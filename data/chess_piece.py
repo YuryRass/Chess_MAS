@@ -8,6 +8,7 @@ from data.position import Position
 
 
 class ChessPiece:
+    """Шахматная фигура"""
     def __init__(
         self,
         name: str,
@@ -15,7 +16,7 @@ class ChessPiece:
         position: Position,
         additional_attacks: list[Move] | None = None,
         chess_id: str = "0",
-    ):
+    ) -> None:
         """Первичная инициализация
 
         Args:

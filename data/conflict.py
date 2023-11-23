@@ -1,4 +1,5 @@
-"""Отвечает за хранение данных о конфликтных ситациях
+"""
+Отвечает за хранение данных о конфликтных ситациях
 на шахматной доске
 """
 
@@ -7,11 +8,12 @@ from data.chess_piece import ChessPiece
 
 
 class Conflict:
+    """Конфликтные ситуации на доске"""
     def __init__(
-            self,
-            source: ChessPiece,
-            victim: ChessPiece,
-    ):
+        self,
+        source: ChessPiece,
+        victim: ChessPiece,
+    ) -> None:
         """
         Args:
             source (ChessPiece): текущая фигура
@@ -22,8 +24,8 @@ class Conflict:
 
     def __eq__(self, other: Self) -> bool:
         return (
-                self.source == other.source
-                and self.victim == other.victim
+            self.source == other.source
+            and self.victim == other.victim
         )
 
     def __hash__(self) -> int:

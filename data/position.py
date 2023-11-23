@@ -1,11 +1,12 @@
-"""Описывает позиции на шахматной доске"""
+"""Позиции шахм. фигур"""
+
 from typing import Self
 from data.vector2 import Vector2
 
 
 class Position:
-
-    def __init__(self, position: Vector2):
+    """Позиции на шахматной доске"""
+    def __init__(self, position: Vector2) -> None:
         self.position = position
 
     @property
@@ -16,7 +17,7 @@ class Position:
     def horizontal(self) -> int:
         return self.position.horizontal
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'Position({self.position.vertical}, ' + \
             f'{self.position.horizontal})'
 

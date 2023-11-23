@@ -6,6 +6,7 @@ from data.vector2 import Vector2
 
 
 class Queen(ChessPiece):
+    """Шахматная фигура - королева"""
     __name = 'Q'
 
     __moves: list[Move] = [
