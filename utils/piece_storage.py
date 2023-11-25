@@ -3,7 +3,7 @@ from typing import Callable
 
 from data.chess_piece import ChessPiece
 from data.pieces import (
-    Queen,
+    Queen, Bishop, Knight
 )
 from data.position import Position
 from data.vector2 import Vector2
@@ -23,6 +23,16 @@ class PieceStorage:
             self.pieces.extend(
                 [
                     Queen(
+                        position=Position(
+                            position=Vector2(vertical=0, horizontal=0),
+                        ),
+                    ),
+                    Bishop(
+                        position=Position(
+                            position=Vector2(vertical=0, horizontal=0),
+                        ),
+                    ),
+                    Knight(
                         position=Position(
                             position=Vector2(vertical=0, horizontal=0),
                         ),
