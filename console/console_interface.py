@@ -46,8 +46,8 @@ class ConsoleInterface:
             if len(arguments) > 1:
                 raise getopt.GetoptError("Problems in input args")
             if not arguments:
-                # fen = "Q6Q/8/8/3QQ3/3QQ3/8/8/Q6Q"
-                fen = '8/8/5B2/8/B1Q2B2/8/1Q2Q3/Q7'
+                fen = "Q6Q/8/8/3QQ3/3QQ3/8/8/Q6Q"
+                # fen = '8/8/5B2/8/B1Q2B2/8/1Q2Q3/Q7'
                 # fen = '8/3N4/5K2/8/3R4/NB3B2/3R4/1Q3Q2'
             else:
                 fen = arguments[0][1]
