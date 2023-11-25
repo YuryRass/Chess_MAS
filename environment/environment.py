@@ -114,7 +114,6 @@ class Environment:
         suggested_moves.sort(key=lambda x: x.number_of_conflicts)
 
         # рандомно вытаскиваем предложение
-        # TODO: другой алгоритм выбора предложения
         if suggested_moves:
             move = random.choice(suggested_moves)
             result = self._board.apply(move)
