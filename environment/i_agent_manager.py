@@ -6,7 +6,8 @@ from agent.agent_message.agent_message import AgentMessage
 
 
 class IAgentManager(ABC):
-    """Интерефейс менеджера агентов"""
+
+    """Базовый интерефейс менеджера агентов"""
 
     @abstractmethod
     async def create_chess_piece_agent(

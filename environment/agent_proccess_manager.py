@@ -9,6 +9,7 @@ from environment.process_entity import ProcessEntity
 
 
 class AgentProcessManager(IAgentManager):
+    """Менеджер агентов"""
 
     def __init__(self) -> None:
         self.process_entities: list[IEntity] = []
@@ -19,6 +20,13 @@ class AgentProcessManager(IAgentManager):
         piece_id: str,
         enabled: bool = True,
     ) -> None:
+        """Создание шахм. фигуры-агента
+
+        Args:
+            board (Board): доска
+            piece_id (str): ID фигуры
+            enabled (bool, optional): активность. Defaults to True.
+        """
         entity: IEntity = ProcessEntity(piece_id, enabled)
         await entity.send_message(
             InitiateAgentMessage(board, piece_id),

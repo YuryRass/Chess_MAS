@@ -3,6 +3,8 @@ from data.board import Board
 
 
 class InitiateAgentMessage(AgentMessage):
+    """Сообщение об инициализации агента"""
+
     def __init__(self, board: Board, piece_id: str):
         super().__init__(MessageType.INITIATE_AGENT)
         self._board = board

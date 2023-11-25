@@ -18,6 +18,14 @@ _mapped_commands = {
 
 
 def get_command(input_data: str) -> CommandEnum:
+    """Получение команды
+
+    Args:
+        input_data (str): входная строка-команда
+
+    Returns:
+        CommandEnum: консольная команда
+    """
     return _mapped_commands.get(
         input_data.lower(),
         CommandEnum.NONE,

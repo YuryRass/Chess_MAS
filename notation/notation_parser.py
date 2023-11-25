@@ -9,6 +9,7 @@ from utils.piece_storage import PieceStorage
 
 
 class NotationParser(ABC):
+    """Базовый парсер"""
 
     @abstractmethod
     def parse(self, fen_str: str, storage: PieceStorage) -> Board:

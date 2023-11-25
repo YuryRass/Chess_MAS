@@ -11,28 +11,42 @@ from environment.i_entity import IEntity
 
 class MyProcess(Process):
     """Описание работы процесса"""
+
     def __init__(
         self,
         name: str,
         input_queue: Queue,
         output_queue: Queue,
     ):
+        """
+        Args:
+            name (str): имя процесса
+            input_queue (Queue): входная очередь сообщений
+            output_queue (Queue): выходная очередь сообщений
+        """
         super().__init__()
         self.name = name
         self.input_queue = input_queue
         self.output_queue = output_queue
 
     def run(self):
+        """Запуск процесса"""
         asyncio.run(self._run())
 
     async def _run(self):
+        """Основная работа процесса"""
+
         agent: Agent | None = None
+        # бесконечный цикл проверки очереди сообщений
         while True:
             if self.input_queue.empty():
                 await asyncio.sleep(0.05)
                 continue
 
+            # как только входная очередь не пуста - вытаскиваем из нее данные
             data: AgentMessage = self.input_queue.get()
+
+            # Инициализация шахматной фигуры - агента
             if data.message_type == MessageType.INITIATE_AGENT:
                 if isinstance(data, InitiateAgentMessage):
                     agent: Agent | None = ChessPieceAgent(
@@ -45,12 +59,15 @@ class MyProcess(Process):
             output_data = await agent.step(data)
             self.output_queue.put(output_data)
 
+            # выходим из цикла, убивая процесс
             if data.message_type == MessageType.KILL:
                 break
 
 
 class ProcessEntity(IEntity):
+
     """Сущность-процесс"""
+
     def __init__(
             self,
             entity_id: str,

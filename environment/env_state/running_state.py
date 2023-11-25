@@ -4,7 +4,7 @@ from data.board import Board
 
 
 class RunningEnvState(EnvState):
-    """Состояние заупска системы"""
+    """Состояние запуска системы"""
     def __init__(self, board: Board):
         super().__init__(EnvStateType.RUNNING)
         self._board = board

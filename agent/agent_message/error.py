@@ -2,6 +2,8 @@ from agent.agent_message.agent_message import AgentMessage, MessageType
 
 
 class ErrorAgentMessage(AgentMessage):
+    """Ошибки, возникающие на стороне агента"""
+
     def __init__(self, piece_id: str, error: str):
         super().__init__(MessageType.ERROR)
         self._error = error

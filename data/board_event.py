@@ -7,7 +7,7 @@ InactivityBoardEvent = None
 
 class ChessPieceMovedBoardEvent:
     """Перемещение шахм. фигур на доске"""
-    
+
     def __init__(
         self,
         piece_id: str,

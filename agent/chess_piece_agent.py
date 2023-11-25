@@ -21,7 +21,7 @@ class ChessPieceAgent(Agent):
         self._piece_id = piece_id
 
     async def step(self, message: AgentMessage) -> AgentMessage:
-        """"""
+        """Этапы работы: инициализация агента, инициализации эпохи"""
         match message.message_type:
             case MessageType.INITIATE_AGENT:
                 return self.init_agent(message)
@@ -31,7 +31,14 @@ class ChessPieceAgent(Agent):
                 return InactivityAgentMessage(piece_id=self._piece_id)
 
     def init_agent(self, message: InitiateAgentMessage) -> AgentMessage:
-        """"""
+        """Инициализация агента
+
+        Args:
+            message (InitiateAgentMessage): сообщение для инициализации агента
+
+        Returns:
+            AgentMessage: сообщение агента
+        """
         self._board = message.board
         self._piece_id = message.piece_id
         return InactivityAgentMessage(piece_id=self._piece_id)
@@ -59,6 +66,7 @@ class ChessPieceAgent(Agent):
             )
 
         conflicts = self._board.get_conflicts()
+
         # список возможных перемещений фигуры
         possible_moves: list[MoveSuggestion] = []
 
@@ -76,7 +84,8 @@ class ChessPieceAgent(Agent):
             # if piece is None:
             #     return ErrorAgentMessage(
             #         piece_id=self._piece_id,
-            #         error="Can't find chess piece with this id after copying board",
+            #         error="Can't find chess piece with " +
+            #         "this id after copying board",
             #     )
 
             # меняем положение фигуры и определяем кол-во новых конфликтов

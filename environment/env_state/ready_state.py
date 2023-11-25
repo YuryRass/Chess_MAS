@@ -4,7 +4,8 @@ from data.board import Board, BoardEvent
 
 
 class ReadyEnvState(EnvState):
-    """Сотсояние готовности системы"""
+    """Состояние готовности системы"""
+
     def __init__(self, board: Board, new_events: list[BoardEvent],):
         """
         Args:

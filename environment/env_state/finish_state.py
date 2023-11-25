@@ -4,7 +4,8 @@ from environment.env_state.state_enum import EnvStateType
 
 
 class FinishEnvState(EnvState):
-    """Конечное ссотояние системы"""
+    """Конечное состояние системы"""
+
     def __init__(self, board: Board, epoch_number: int):
         """
         Args:

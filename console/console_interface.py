@@ -3,6 +3,7 @@ import sys
 import asyncio
 import aioconsole as aio
 from console.command import CommandEnum, get_command
+from environment.agent_proccess_manager import AgentProcessManager
 
 from environment.env_state import (
     EnvState,
@@ -26,7 +27,7 @@ class ConsoleInterface:
         self.parser = FenNotationParser()
 
     def run(self):
-        """Запуск приложения с передачей аргументов
+        """Запуск приложения с передачей аргументов в командной строке
 
         Raises:
             getopt.GetoptError: ошибка в переданных аргументах
@@ -54,7 +55,7 @@ class ConsoleInterface:
             self.env = Environment(
                 board,
                 self.environment_callback,
-                None,
+                AgentProcessManager(),
             )
             asyncio.run(self.control_loop())
         except getopt.error as err:
@@ -79,6 +80,7 @@ class ConsoleInterface:
                     ...
 
     def environment_callback(self, state: EnvState) -> None:
+        """Основная работа виртуальной среды"""
         match state.state_type:
             case EnvStateType.IDLE:
                 if isinstance(state, IdleEnvState):
