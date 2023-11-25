@@ -4,6 +4,7 @@ from agent.agent_message.agent_message import AgentMessage
 
 
 class IEntity(ABC):
+
     """Интерефейс сущности-процесса"""
 
     def __init__(

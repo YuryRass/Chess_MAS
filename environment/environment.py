@@ -24,9 +24,18 @@ class Environment:
         console_callback: Callable[[EnvState], None],
         agent_manager: IAgentManager,
     ) -> None:
+        """
+        Args:
+            board (Board): шахм. доска
+            console_callback (Callable[[EnvState], None]): callback-функция
+            agent_manager (IAgentManager): менеджер агентов
+        """
         self._board = board
         self._agent_manager = agent_manager
+
+        # консольная функция для вывода результатов МАС
         self._console_callback = console_callback
+
         self._initial_board_state = board.copy()
         self._steps_without_progress = 0
         self._epoch_number = 0
@@ -35,6 +44,7 @@ class Environment:
         self._is_run = True
 
     async def initialize(self) -> None:
+        """Создание агентов-процессов в вирутальной среде"""
         await asyncio.gather(
             *[
                 self._agent_manager.create_chess_piece_agent(
@@ -47,6 +57,8 @@ class Environment:
         self._console_callback(RunningEnvState(self._board))
 
     async def run(self) -> None:
+        """Запуск виртуальной среды - МАС в режиме AUTO"""
+
         while self._steps_without_progress < 300:
             if not self._is_run:
                 break
@@ -67,6 +79,8 @@ class Environment:
             await self.stop()
 
     async def stop(self) -> None:
+        """Остановка работы МАС"""
+
         await self._agent_manager.kill_all_agent()
         self._is_run = False
         self._console_callback(
@@ -74,23 +88,33 @@ class Environment:
         )
 
     async def _step(self) -> BoardEvent:
+        """Работа по уменьшению кол-ва конфликтных ситуаций на доске
+
+        Returns:
+            BoardEvent: информация о шахм. ходе
+        """
         self._epoch_number += 1
 
         responses = await self._agent_manager.send_all(
             InitiateEpochAgentMessage(self._board),
         )
 
+        # предложения по шахматным ходам от каждого агента
         suggested_moves_from_each_agent = [
             e for e in responses
             if isinstance(e, SuggestMoveAgentMessage)
         ]
 
+        # делаем общий список с предложениями от агентов
         suggested_moves: list[MoveSuggestion] = []
         for agent_suggestion in suggested_moves_from_each_agent:
             suggested_moves.extend(agent_suggestion.move_suggestion)
 
+        # сортировка предложений в порядке возрастания по кол-ву конфликтов
         suggested_moves.sort(key=lambda x: x.number_of_conflicts)
 
+        # рандомно вытаскиваем предложение
+        # TODO: другой алгоритм выбора предложения
         if suggested_moves:
             move = random.choice(suggested_moves)
             result = self._board.apply(move)

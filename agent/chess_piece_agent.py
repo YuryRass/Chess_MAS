@@ -44,7 +44,7 @@ class ChessPieceAgent(Agent):
         return InactivityAgentMessage(piece_id=self._piece_id)
 
     def initiate_epoch(
-            self, message: InitiateEpochAgentMessage
+        self, message: InitiateEpochAgentMessage
     ) -> AgentMessage:
 
         """Инициализация эпохи. Определяет новые ходы фигуры,

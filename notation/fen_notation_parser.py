@@ -14,7 +14,7 @@ class FenNotationParser(NotationParser):
 
     def parse(self, fen_str: str, storage: PieceStorage) -> Board:
         """Парсит строку, представленную по нотации
-        Форсайта-Эдвардса (FEN-строка)
+        Форсайта-Эдвардса (FEN-строка) и возвращает шахм. доску с фигурами
 
         Args:
             fen_str (str): FEN-строка

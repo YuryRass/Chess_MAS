@@ -22,18 +22,19 @@ from notation.fen_notation_parser import FenNotationParser
 
 class ConsoleInterface:
     """Интерфейс консоли"""
-    def __init__(self):
+
+    def __init__(self) -> None:
         self.env: Environment | None = None
         self.parser = FenNotationParser()
 
-    def run(self):
+    def run(self) -> None:
         """Запуск приложения с передачей аргументов в командной строке
 
         Raises:
             getopt.GetoptError: ошибка в переданных аргументах
         """
         argumentList = sys.argv[1:]
-        options = "f:"
+        options = "f:"  # -f
         long_options = ["fen"]
         try:
             fen = ""

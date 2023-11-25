@@ -27,7 +27,9 @@ class AgentProcessManager(IAgentManager):
             piece_id (str): ID фигуры
             enabled (bool, optional): активность. Defaults to True.
         """
+        # создаем и запускаем новый процесс-агент
         entity: IEntity = ProcessEntity(piece_id, enabled)
+
         await entity.send_message(
             InitiateAgentMessage(board, piece_id),
         )

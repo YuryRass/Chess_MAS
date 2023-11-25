@@ -10,6 +10,8 @@ from data.vector2 import Vector2
 
 
 class PieceStorage:
+    """Хранилище шахматных фигур"""
+
     def __init__(self, is_standart: bool = False):
         """
         Args:

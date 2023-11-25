@@ -16,7 +16,8 @@ class IAgentManager(ABC):
         piece_id: str,
         enabled: bool = True,
     ) -> None:
-        pass
+        """Создание шахматной фигуры - агента"""
+        ...
 
     @abstractmethod
     async def send_message(
@@ -24,15 +25,18 @@ class IAgentManager(ABC):
         item: IEntity,
         message: AgentMessage,
     ) -> AgentMessage:
-        pass
+        """отправка сообщения агенту менеджером"""
+        ...
 
     @abstractmethod
     async def send_all(
         self,
         message: AgentMessage,
     ) -> list[AgentMessage]:
-        pass
+        """Отправка сообщения всем агентам"""
+        ...
 
     @abstractmethod
     async def kill_all_agent(self) -> None:
+        """Уничтожение всех порцессов-агентов"""
         ...

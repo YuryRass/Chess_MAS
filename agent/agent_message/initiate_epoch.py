@@ -3,7 +3,7 @@ from data.board import Board
 
 
 class InitiateEpochAgentMessage(AgentMessage):
-    """Сообщение об инициализации эапохи агента"""
+    """Сообщение об инициализации эпохи агента"""
     def __init__(self, board: Board):
         super().__init__(MessageType.INITIATE_EPOCH)
         self._board = board

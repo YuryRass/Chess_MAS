@@ -69,21 +69,24 @@ class ProcessEntity(IEntity):
     """Сущность-процесс"""
 
     def __init__(
-            self,
-            entity_id: str,
-            enabled: bool = True,
+        self,
+        entity_id: str,
+        enabled: bool = True,
     ) -> None:
         super().__init__(entity_id, enabled)
         self.input_queue = Queue()
         self.output_queue = Queue()
+        # !меняем местами очереди
         self.process = MyProcess(
             name=str(self._entity_id),
             input_queue=self.output_queue,
             output_queue=self.input_queue,
         )
-        self.process.start()
+        self.process.start()  # запуск процесса
 
     async def send_message(self, message: AgentMessage,) -> AgentMessage:
+        """Отправка сообщения агенту через очередь"""
+
         self.output_queue.put(message)
 
         while self.input_queue.empty():
