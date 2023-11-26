@@ -81,13 +81,6 @@ class ChessPieceAgent(Agent):
             new_board = self._board.copy()
             new_piece = new_board.find_piece_by_id(self._piece_id)
 
-            # if piece is None:
-            #     return ErrorAgentMessage(
-            #         piece_id=self._piece_id,
-            #         error="Can't find chess piece with " +
-            #         "this id after copying board",
-            #     )
-
             # меняем положение фигуры и определяем кол-во новых конфликтов
             new_board.move(new_piece, new_position)
             new_conflicts = new_board.get_conflicts()

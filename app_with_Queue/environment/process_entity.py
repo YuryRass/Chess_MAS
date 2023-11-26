@@ -85,7 +85,7 @@ class ProcessEntity(IEntity):
         self.process.start()  # запуск процесса
 
     async def send_message(self, message: AgentMessage,) -> AgentMessage:
-        """Отправка сообщения агенту через очередь"""
+        """Отправка сообщения через очередь"""
 
         self.output_queue.put(message)
 
